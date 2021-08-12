@@ -1,6 +1,6 @@
 import mysql.connector as sqlcon
 
-conn=sqlcon.connect(host='localhost',user='root',passwd='My={___mahadev:Aditya___}',db='Aditya')
+conn=sqlcon.connect(host='localhost',user='root',passwd='root',db='root')
 
 if conn.is_connected() == False:
     print('Error in connection')

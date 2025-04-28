@@ -5,6 +5,8 @@ from colorama import init
 from termcolor import colored
 from random import choice
 
+# pip install auto-py-to-exe
+
 def hack(host,user):
     words= input(' Enter CHARACTERS      : ')
     length=int(input(' Enter password length : '))
@@ -33,21 +35,24 @@ def hack(host,user):
                 break
             except:
                 print('.',end='')
-            
 
-            
-            
-    
-    
-
-    
-    
 
 init()
 host=input(' Enter HOST or IP  : ')
 if len(host.strip())== 0:
     host='localhost'
-    
+    port = 3306 
+
+elif ":" in host:
+    host, port = host.split(":")
+    try:
+        port = int(port.strip())
+    except:
+        print("---> invalid port")
+        port = 3306 
+
+
+
 user=input(' Enter USER name   : ')
 if len(user.strip())==0:
     user='root'
@@ -64,11 +69,11 @@ if passwd.lower() == '-hack':
     hack(host,user)
 
 
-conn=connector.connect(host=host,user=user,passwd=passwd)
+conn=connector.connect(host=host,user=user,passwd=passwd, port = port)
 
 cursor=conn.cursor()
 
-input_text='AdityaSql'#
+input_text='MySql'#
 while True:
     print('\n')
     
